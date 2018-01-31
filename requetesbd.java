@@ -1,5 +1,5 @@
-package airChance;
 
+package airChance;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -1,7 +1,9 @@
+
 package airChance;
 
 
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 /*
@@ -43,6 +45,7 @@ public class VolReservationPassager {
     public void setDateVol(Date dateVol) {
         this.dateVol = dateVol;
     }
+
     public String insertVolResaPassager(int numVolPassager,int numResa, Date dateVol){
                      
         SimpleDateFormat formater = null;

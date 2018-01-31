@@ -1,7 +1,9 @@
+
 package airChance;
 
 
 import airChance.requeteAirChancePetit;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,6 +42,9 @@ public class Connexionsgbd {
             //RequeteAirChance.planificationVol(conn);
             
             requeteAirChancePetit.getAllvoyageAfterDate(conn);
+
+            RequeteAirChance.deleteVol(conn);
+
 
             // Print information about connection warnings
             SQLWarningsExceptions.printWarnings(conn);

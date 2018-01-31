@@ -1,3 +1,4 @@
+
 package airChance;
 
 
@@ -52,6 +53,7 @@ public class PlaceVolResa {
     public void setDateVol(Date dateVol) {
         this.dateVol = dateVol;
     }
+
     public String insertPlaceVol(int numPlace,int numVolPassager, int numResa,Date dateVol){
                      
         SimpleDateFormat formater = null;
@@ -61,5 +63,6 @@ public class PlaceVolResa {
         System.out.println("Place Vol Créé");
         return query;
     }
+
     
 }

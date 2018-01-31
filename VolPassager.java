@@ -1,9 +1,15 @@
+
 package airChance;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static jdk.nashorn.internal.objects.NativeRegExp.test;
 
 /*
@@ -11,15 +17,18 @@ import static jdk.nashorn.internal.objects.NativeRegExp.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
  * @author rambaudb
  */
 public class VolPassager {
 
+
     private int numVolPassager;
     private Date date = new Date();
     private int heureDepart = 10;
+
     private int dureeVol = 14;
     private int distanceVol = 150;
     private int nombrePlaceDispoEco = 50;
@@ -168,5 +177,6 @@ public class VolPassager {
         String query = "SELECT nombrePlaceDispoEco,nombrePlaceDispoAffaire,nombrePlaceDispoPremiere FROM VolPassager WHERE dateVol=TO_DATE('" + formater.format(dateVol) + "','DD/MM/YYYY') AND numVolpassager=" + numVolpassager;
         return query;
     }
-
+    
+    
 }

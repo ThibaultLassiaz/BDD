@@ -1,3 +1,4 @@
+
 package airChance;
 
 
@@ -70,6 +71,7 @@ public class Place {
     public void setNumAvionPassager(int numAvionPassager) {
         this.numAvionPassager = numAvionPassager;
     }
+
     public String maxPlace(){
         
         String query = "SELECT MAX(numPlace) FROM PLACE";
@@ -83,5 +85,4 @@ public class Place {
         String query = "INSERT INTO PLACE values ("+ numPlace+",'"+categoriePlace+"','"+positionPlace+"',"+prixPlace+",sysdate,"+numAvionPassager+")";
         return query;
     }
-    
 }

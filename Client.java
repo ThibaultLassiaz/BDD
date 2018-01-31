@@ -1,3 +1,4 @@
+
 package airChance;
 
 /*
@@ -98,4 +99,5 @@ public class Client {
         String query="UPDATE CLIENT SET aReduction=0 WHERE numClient="+numClient;
         return query;
     }
+
 }

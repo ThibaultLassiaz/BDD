@@ -1,3 +1,4 @@
+
 package airChance;
 
 
@@ -31,6 +32,7 @@ public class VolFret {
     VolFret() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
     public int getNumVolFret() {
         return numVolFret;
@@ -130,4 +132,5 @@ public class VolFret {
          return query;
     }
     
+
 }
