@@ -1,3 +1,4 @@
+
 package airChance;
 
 
@@ -6,9 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import java.util.Date;
 /*
  * To change this license header, choose License Headers in 
  Project Properties.
@@ -226,5 +230,4 @@ public class RequeteAirChance {
 
 
     }
-
 }

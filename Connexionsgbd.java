@@ -1,5 +1,7 @@
+
 package airChance;
 
+import airChance.requeteAirChancePetit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,7 +29,7 @@ public class Connexionsgbd {
             Connection conn2 = DriverManager.getConnection(dbUrl, username, password);
             conn.setAutoCommit(false); 
             conn2.setAutoCommit(false); 
-            
+
             int choix = 0;
             do {
             System.out.println("************ MENU ************");
@@ -68,7 +70,8 @@ public class Connexionsgbd {
                      System.out.println("******************************");  
                      break;
             case 7:  
-                     System.out.println("******************************");  
+                     System.out.println("******************************");
+                     requeteAirChancePetit.getAllvoyageAfterDate(conn);
                      break;
             case 8:  
                      System.out.println("******************************");  
@@ -86,11 +89,19 @@ public class Connexionsgbd {
                     choix = 11;
         }
             } while (choix != 11);
+            
+            System.out.println("test requête");
+            //RequeteAirChance.updatePilote(conn);
+            //RequeteAirChance.deletePiloteVolPassager(conn);
+            //RequeteAirChance.scenario1(conn, conn2);
+            System.out.println("------------------- ");
             //RequeteAirChance.getAllPiloteVolPassager(conn);
             
             //RequeteAirChance.planificationVol(conn);
-            
+
             //RequeteAirChance.deleteVol(conn);
+
+            RequeteAirChance.deleteVol(conn);
 
             // Print information about connection warnings
             SQLWarningsExceptions.printWarnings(conn);

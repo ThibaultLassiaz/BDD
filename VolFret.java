@@ -1,3 +1,4 @@
+
 package airChance;
 
 
@@ -27,6 +28,11 @@ public class VolFret {
     private String aeroportDestination;
     private String aeroportOrigine;
     private int numAvionFret;
+
+
+    VolFret() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public int getNumVolFret() {
         return numVolFret;
@@ -119,6 +125,12 @@ public class VolFret {
         this.aeroportDestination = aeroportDestination;
         this.aeroportOrigine = aeroportOrigine;
         this.numAvionFret = numAvionFret;
+    }
+    
+
+     public String getAllVoyageBeforeDate(){
+         String query="SELECT * FROM VolFret WHERE dateVol>sysdate";
+         return query;
     }
     
 }
