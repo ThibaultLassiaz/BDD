@@ -1,4 +1,8 @@
 
+package airChance;
+
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
@@ -39,5 +43,14 @@ public class VolReservationPassager {
 
     public void setDateVol(Date dateVol) {
         this.dateVol = dateVol;
+    }
+    public String insertVolResaPassager(int numVolPassager,int numResa, Date dateVol){
+                     
+        SimpleDateFormat formater = null;
+        formater = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String query = "INSERT INTO VolReservationPassager values ("+ numVolPassager+","+numResa+",TO_DATE('"+formater.format(dateVol)+"','DD/MM/YYYY'))";
+        System.out.println("Reservation Vol Créé");
+        return query;
     }
 }

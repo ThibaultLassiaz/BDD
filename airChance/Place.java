@@ -1,4 +1,8 @@
 
+
+package airChance;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
@@ -66,5 +70,20 @@ public class Place {
 
     public void setNumAvionPassager(int numAvionPassager) {
         this.numAvionPassager = numAvionPassager;
+    }
+
+
+    public String maxPlace(){
+        
+        String query = "SELECT MAX(numPlace) FROM PLACE";
+        
+        return query;
+    }
+    
+    public String insertPlace(int numPlace,String categoriePlace, String positionPlace,int prixPlace,int numAvionPassager){
+       
+        
+        String query = "INSERT INTO PLACE values ("+ numPlace+",'"+categoriePlace+"','"+positionPlace+"',"+prixPlace+",sysdate,"+numAvionPassager+")";
+        return query;
     }
 }

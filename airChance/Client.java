@@ -1,3 +1,6 @@
+
+package airChance;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -82,4 +85,20 @@ public class Client {
         this.paysClient = paysClient;
     }
     private String paysClient;
+
+    
+    public String getAllClient(){
+        String query="SELECT * FROM CLIENT";
+        return query;
+        
+    }
+    public String getFideliteCLient(int numClient){
+        String query="SELECT nbPointFidelite,aReduction FROM CLIENT WHERE numClient="+numClient;
+        return query;
+    }     
+    public String updateClient(int numClient){
+        String query="UPDATE CLIENT SET aReduction=0 WHERE numClient="+numClient;
+        return query;
+    }
+
 }

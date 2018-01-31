@@ -1,4 +1,9 @@
+package airChance;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import static jdk.nashorn.internal.objects.NativeRegExp.test;
@@ -8,17 +13,15 @@ import static jdk.nashorn.internal.objects.NativeRegExp.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author rambaudb
  */
 public class VolPassager {
-    
-    
+
     private int numVolPassager;
     private Date date = new Date();
-    private int heureDepart = 10; 
+    private int heureDepart = 10;
     private int dureeVol = 14;
     private int distanceVol = 150;
     private int nombrePlaceDispoEco = 50;
@@ -132,32 +135,65 @@ public class VolPassager {
         this.aeroportOrigine = aeroportOrigine;
         this.numAvionPassager = numAvionPassager;
     }
-    
-    public String insertVol(int numVol, String origine, String destination, int numAvion){
-        
+
+    public VolPassager(int numVolPassager, Date date) {
+        this.numVolPassager = numVolPassager;
+        this.date = date;
+    }
+
+    public List<String> delete(int numVolPassager, Date date) {
+
         SimpleDateFormat formater = null;
         formater = new SimpleDateFormat("dd/MM/yyyy");
-                
-        String query = "INSERT INTO VolPassager values ("+numVol+",TO_DATE('"+formater.format(this.date)+"','DD/MM/YYYY'),'"+this.heureDepart+"','"+this.dureeVol+"','"+this.distanceVol+"','"+this.nombrePlaceDispoEco+"','"+this.nombrePlaceDispoAffaire+"','"+this.nombrePlaceDispoPremiere+"','"+destination+
-                        "','"+origine+"','"+numAvion+"',0)";
-        
-        return query;
-    }
-    
-    public String delete(int numVolPassager){
-        String query = "DELETE FROM VolPassager where numVolPassager='"+numVolPassager+"' ";
-                
-        return query;
-    }
-    
-    
-    public String finishVol(int numVolPassager){
-        String query = "UPDATE VolPassager SET estTermine=1 where numvolpassager = '"+numVolPassager+"'";
-        
-        return query;
-    }
-    
-    
 
-    
+        String query1 = "DELETE FROM VolPassager where numVolPassager='" + numVolPassager + "'and datevol = TO_DATE('" + formater.format(date) + "','DD/MM/YYYY')";
+        String query2 = "DELETE FROM PlaceVolResa where numVolPassager='" + numVolPassager + "'and datevol = TO_DATE('" + formater.format(date) + "','DD/MM/YYYY')";
+        String query3 = "DELETE FROM HotesseVolPassager where numVolPassager='" + numVolPassager + "'and datevol = TO_DATE('" + formater.format(date) + "','DD/MM/YYYY')";
+        String query4 = "DELETE FROM PiloteVolPassager where numVolPassager='" + numVolPassager + "'and datevol = TO_DATE('" + formater.format(date) + "','DD/MM/YYYY')";
+
+        List<String> listquery = new ArrayList<String>();
+
+        listquery.add(query1);
+        listquery.add(query2);
+        listquery.add(query3);
+        listquery.add(query4);
+
+        return listquery;
+    }
+
+    public String insertVol(int numVol, String origine, String destination, int numAvion) {
+
+        SimpleDateFormat formater = null;
+        formater = new SimpleDateFormat("dd/MM/yyyy");
+
+        String query = "INSERT INTO VolPassager values (" + numVol + ",TO_DATE('" + formater.format(this.date) + "','DD/MM/YYYY'),'" + this.heureDepart + "','" + this.dureeVol + "','" + this.distanceVol + "','" + this.nombrePlaceDispoEco + "','" + this.nombrePlaceDispoAffaire + "','" + this.nombrePlaceDispoPremiere + "','" + destination
+                + "','" + origine + "','" + numAvion + "',0)";
+
+      
+        return query;
+    }
+
+    public String delete(int numVolPassager) {
+        String query = "DELETE FROM VolPassager where numVolPassager='" + numVolPassager + "' ";
+
+        return query;
+    }
+
+    public String finishVol(int numVolPassager) {
+        String query = "UPDATE VolPassager SET estTermine=1 where numvolpassager = '" + numVolPassager + "'";
+
+        return query;
+    }
+
+    public String getAllVoyageBeforeDate() {
+        String query = "SELECT * FROM VolPassager WHERE dateVol>sysdate";
+        return query;
+    }
+
+    public String getNbPlaceDispo(int numVolpassager, Date dateVol) {
+        SimpleDateFormat formater = null;
+        formater = new SimpleDateFormat("dd/MM/yyyy");
+        String query = "SELECT nombrePlaceDispoEco,nombrePlaceDispoAffaire,nombrePlaceDispoPremiere FROM VolPassager WHERE dateVol=TO_DATE('" + formater.format(dateVol) + "','DD/MM/YYYY') AND numVolpassager=" + numVolpassager;
+        return query;
+    }
 }

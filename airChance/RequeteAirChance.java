@@ -1,10 +1,18 @@
 
+package airChance;
+
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import java.util.Date;
 import java.util.List;
 /*
@@ -30,17 +38,19 @@ public class RequeteAirChance {
     public static void updatePilote(Connection conn) throws
             SQLException {
 
-        conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+        conn.setTransactionIsolation(conn.TRANSACTION_READ_COMMITTED);
         // Get a statement from the connection
         Statement stmt = conn.createStatement();
 
         Pilote p = new Pilote();
         // Execute the query
-        ResultSet rs = stmt.executeQuery(p.updatePilote());
+        //ResultSet rs = stmt.executeQuery(p.updatePilote());
+        
+        stmt.executeUpdate(p.updatePilote());
         //ResultSet rs = stmt.executeQuery("SELECT numVolPassager FROM volPassager where numVolPassager = 2");
 
         // Close the result set, statement and the connection 
-        rs.close();
+        //rs.close();
         stmt.close();
 
     }
@@ -64,7 +74,7 @@ public class RequeteAirChance {
             SQLException {
 
         conn.setAutoCommit(false);
-        conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+        conn.setTransactionIsolation(conn.TRANSACTION_READ_COMMITTED);
 
         Statement stmt = conn.createStatement();
 
@@ -281,10 +291,10 @@ public class RequeteAirChance {
         int numHotesse = LectureClavier.lireEntier("Choisir l'hotesse à affecter à ce vol");
 
         PiloteVolPassager p = new PiloteVolPassager();
-        rs = stmt.executeQuery(p.insertPilote(numPilote, numVol));
+        stmt.executeUpdate(p.insertPilote(numPilote, numVol));
 
         HotesseVolPassager h = new HotesseVolPassager();
-        rs = stmt.executeQuery(h.insertHotesse(numHotesse, numVol));
+        stmt.executeUpdate(h.insertHotesse(numHotesse, numVol));
 
         System.out.println("Le vol crée est le suivant :");
         rs = stmt.executeQuery("select aeroportDestination, aeroportOrigine, numAvionPassager from volpassager where numvolpassager = " + numVol);
@@ -318,11 +328,11 @@ public class RequeteAirChance {
         stmt.close();
     }
 
-    public static void deleteVol(Connection conn) throws
-            SQLException {
+    public static void deleteVol(Connection conn) throws SQLException {
 
         VolPassager vp = new VolPassager();
         Statement stmt = conn.createStatement();
+        List<VolPassager> listvol = new ArrayList<VolPassager>();
         // Execute the query
         ResultSet rs = stmt.executeQuery("select numvolpassager from volpassager");
         while (rs.next()) {
@@ -335,8 +345,9 @@ public class RequeteAirChance {
 
     }
 
-    public static void insertOrDeletePersonnelDeVol(Connection conn) throws
-            SQLException {
+        
+        
+    public static void insertOrDeletePersonnelDeVol(Connection conn) throws SQLException {
 
         Statement stmt = conn.createStatement();
         System.out.println("1 - Ajouter un personnel à un vol");
@@ -386,5 +397,6 @@ public class RequeteAirChance {
             System.out.print("Nombre Heure :  " + rs.getString(3) + "h  ");
         }
     }
+
 
 }
