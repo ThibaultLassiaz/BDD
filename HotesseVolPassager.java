@@ -1,4 +1,5 @@
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
@@ -15,6 +16,7 @@ public class HotesseVolPassager {
     
     private int numHotesse;
     private int numVolPassager;
+    private Date dateVol = new Date();
 
     public int getNumHotesse() {
         return numHotesse;
@@ -39,5 +41,14 @@ public class HotesseVolPassager {
     public void setDateVol(Date dateVol) {
         this.dateVol = dateVol;
     }
-    private Date dateVol;
+    
+    
+    
+    public String insertHotesse(int numHotesse, int numVol){
+        
+        SimpleDateFormat formater = null;
+        formater = new SimpleDateFormat("dd/MM/yyyy");
+        String query ="INSERT INTO HotesseVolPassager values('"+numHotesse+"','"+numVol+"',TO_DATE('"+formater.format(this.dateVol)+"','DD/MM/YYYY'))";
+        return query; 
+    }
 }

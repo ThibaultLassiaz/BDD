@@ -128,6 +128,13 @@ public class Pilote {
         return query;
     }
     
+    public String viewHours(int numPilote){
+        
+
+        String query = "select numpilote, nompersonnel, nbheuretotal from pilote where numpilote = "+numPilote;
+        return query;
+    }
+    
     
     
 }

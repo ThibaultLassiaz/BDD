@@ -1,4 +1,5 @@
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
@@ -15,7 +16,7 @@ public class PiloteVolPassager {
     
     private int numPilote;
     private int numVolPassager;
-    private Date dateVol;
+    private Date dateVol = new Date();
 
     PiloteVolPassager() {
 
@@ -59,6 +60,14 @@ public class PiloteVolPassager {
     public String insert(){
         String query ="INSERT INTO PiloteVolPassager values(5,4,TO_DATE('29/01/2018', 'DD/MM/YYYY'))";
         return query;
+    }
+    
+    public String insertPilote(int numPilote, int numVol){
+        
+        SimpleDateFormat formater = null;
+        formater = new SimpleDateFormat("dd/MM/yyyy");
+        String query ="INSERT INTO PiloteVolPassager values('"+numPilote+"','"+numVol+"',TO_DATE('"+formater.format(this.dateVol)+"','DD/MM/YYYY'))";
+        return query; 
     }
    
     

@@ -28,15 +28,22 @@ public class Connexionsgbd {
             
             
             System.out.println("test requête");
-            //RequeteAirChance.updatePilote(conn);
-            //RequeteAirChance.deletePiloteVolPassager(conn);
+      
+              //RequeteAirChance.deletePiloteVolPassager(conn);
             //RequeteAirChance.scenario1(conn, conn2);
+            //RequeteAirChance.updatePilote(conn);
             System.out.println("------------------- ");
             //RequeteAirChance.getAllPiloteVolPassager(conn);
             
+            //RequeteAirChance.newScneraio1Planification(conn);
+            
+            RequeteAirChance.newScneraio1Update(conn);
+            
             //RequeteAirChance.planificationVol(conn);
             
-            RequeteAirChance.deleteVol(conn);
+            //RequeteAirChance.deleteVol(conn);
+            
+            //RequeteAirChance.consultationNbHeurePilote(conn);
 
             // Print information about connection warnings
             SQLWarningsExceptions.printWarnings(conn);

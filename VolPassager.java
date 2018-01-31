@@ -139,7 +139,7 @@ public class VolPassager {
         formater = new SimpleDateFormat("dd/MM/yyyy");
                 
         String query = "INSERT INTO VolPassager values ("+numVol+",TO_DATE('"+formater.format(this.date)+"','DD/MM/YYYY'),'"+this.heureDepart+"','"+this.dureeVol+"','"+this.distanceVol+"','"+this.nombrePlaceDispoEco+"','"+this.nombrePlaceDispoAffaire+"','"+this.nombrePlaceDispoPremiere+"','"+destination+
-                        "','"+origine+"','"+numAvion+"')";
+                        "','"+origine+"','"+numAvion+"',0)";
         
         return query;
     }
